@@ -15,7 +15,7 @@ public class Veteran {
     private String participantId;
 
     @OneToMany(cascade= CascadeType.ALL) // mappedBy = "veteran",
-//    @JoinColumn(name = "veteran_id")
+    @JoinColumn(name = "veteran_id")
     private Set<Beneficiary> beneficiaries = new HashSet<>();
 
     public Veteran() {

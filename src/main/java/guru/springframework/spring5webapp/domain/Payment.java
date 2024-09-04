@@ -1,5 +1,7 @@
 package guru.springframework.spring5webapp.domain;
 
+import lombok.ToString;
+
 import javax.persistence.*;
 
 import java.util.Objects;
@@ -15,6 +17,9 @@ public class Payment {
     private String scheduleDate;
     private String returnedStatus;
 
+    @ManyToOne
+    @ToString.Exclude
+    private Beneficiary beneficiary;
 
     public Payment() {
     }

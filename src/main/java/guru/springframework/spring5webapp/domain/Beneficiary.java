@@ -1,5 +1,7 @@
 package guru.springframework.spring5webapp.domain;
 
+import lombok.ToString;
+
 import javax.persistence.*;
 
 import java.util.HashSet;
@@ -14,11 +16,15 @@ public class Beneficiary {
     private String name;
     private String type;
     @OneToMany(cascade= CascadeType.ALL) // mappedBy = "beneficiary",
-//    @JoinColumn(name = "beneficiary_id")
+    @JoinColumn(name = "beneficiary_id")
     private Set<Payment> payments;
     @OneToMany(cascade= CascadeType.ALL) // mappedBy = "beneficiary"
-//    @JoinColumn(name = "beneficiary_id")
+    @JoinColumn(name = "beneficiary_id")
     private Set<ReturnedPayment> returnedPayments = new HashSet<>();
+
+    @ManyToOne
+    @ToString.Exclude
+    private Veteran veteran;
 
     public Beneficiary() {
     }
