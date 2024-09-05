@@ -17,7 +17,7 @@ public class Beneficiary {
     private String type;
     @OneToMany(cascade= CascadeType.ALL) // mappedBy = "beneficiary",
     @JoinColumn(name = "beneficiary_id")
-    private Set<Payment> payments;
+    private Set<Payment> payments = new HashSet<>();
     @OneToMany(cascade= CascadeType.ALL) // mappedBy = "beneficiary"
     @JoinColumn(name = "beneficiary_id")
     private Set<ReturnedPayment> returnedPayments = new HashSet<>();

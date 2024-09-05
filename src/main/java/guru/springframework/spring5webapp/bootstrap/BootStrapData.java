@@ -52,12 +52,9 @@ public class BootStrapData implements CommandLineRunner {
         Payment gloriaSpousePayment02 = new Payment("Retroactive", 1038.79F, "04/13/2018", "04/13/2018", "returned");
 
         gloriaMendoza.getBeneficiaries().add(gloriaSpouse);
-        // the below line is causing an error
-        // Cannot invoke "java.util.Set.add(Object)" because the return value of
-        // "guru.springframework.spring5webapp.domain.Beneficiary.getPayments()" is null
-
-//        gloriaSpouse.getPayments().add(gloriaSpousePayment01);
-//        gloriaSpouse.getPayments().add(gloriaSpousePayment02);
+        System.out.println(gloriaSpouse.toString());
+        gloriaSpouse.getPayments().add(gloriaSpousePayment01);
+        gloriaSpouse.getPayments().add(gloriaSpousePayment02);
 
 //        veteranRepository.save(gloriaMendoza);
 //        beneficiaryRepository.save(gloriaSpouse);
