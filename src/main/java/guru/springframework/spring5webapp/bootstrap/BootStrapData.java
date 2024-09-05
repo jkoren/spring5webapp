@@ -7,6 +7,10 @@ import guru.springframework.spring5webapp.domain.Payment;
 import guru.springframework.spring5webapp.domain.Veteran;
 import guru.springframework.spring5webapp.repositories.AuthorRepository;
 import guru.springframework.spring5webapp.repositories.BookRepository;
+import guru.springframework.spring5webapp.repositories.VeteranRepository;
+import guru.springframework.spring5webapp.repositories.BeneficiaryRepository;
+import guru.springframework.spring5webapp.repositories.PaymentRepository;
+import guru.springframework.spring5webapp.repositories.ReturnedPaymentRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -18,10 +22,19 @@ public class BootStrapData implements CommandLineRunner {
 
     private final AuthorRepository authorRepository;
     private final BookRepository bookRepository;
+    private final VeteranRepository veteranRepository;
+    private final BeneficiaryRepository beneficiaryRepository;
+    private final PaymentRepository paymentRepository;
+    private final ReturnedPaymentRepository returnedPaymentRepository;
 
-    public BootStrapData(AuthorRepository authorRepository, BookRepository bookRepository) {
+
+    public BootStrapData(AuthorRepository authorRepository, BookRepository bookRepository, VeteranRepository veteranRepository, BeneficiaryRepository beneficiaryRepository, PaymentRepository paymentRepository, ReturnedPaymentRepository returnedPaymentRepository) {
         this.authorRepository = authorRepository;
         this.bookRepository = bookRepository;
+        this.veteranRepository = veteranRepository;
+        this.beneficiaryRepository = beneficiaryRepository;
+        this.paymentRepository = paymentRepository;
+        this.returnedPaymentRepository = returnedPaymentRepository;
     }
 
     @Override
@@ -56,13 +69,13 @@ public class BootStrapData implements CommandLineRunner {
         gloriaSpouse.getPayments().add(gloriaSpousePayment01);
         gloriaSpouse.getPayments().add(gloriaSpousePayment02);
 
-//        veteranRepository.save(gloriaMendoza);
-//        beneficiaryRepository.save(gloriaSpouse);
-//        paymentRepository.save(gloriaSpousePayment01);
-//        paymentRepository.save(gloriaSpousePayment02);
-//
-//        System.out.println("number of veterans: " + veteranRepository.count());
-//        System.out.println("number of beneficiaries: " + beneficiaryRepository.count());
-//        System.out.println("number of payments: " + paymentRepository.count());
+        veteranRepository.save(gloriaMendoza);
+        beneficiaryRepository.save(gloriaSpouse);
+        paymentRepository.save(gloriaSpousePayment01);
+        paymentRepository.save(gloriaSpousePayment02);
+
+        System.out.println("number of veterans: " + veteranRepository.count());
+        System.out.println("number of beneficiaries: " + beneficiaryRepository.count());
+        System.out.println("number of payments: " + paymentRepository.count());
     }
 }
