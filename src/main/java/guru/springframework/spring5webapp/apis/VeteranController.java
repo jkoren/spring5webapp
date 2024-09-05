@@ -1,5 +1,8 @@
 package guru.springframework.spring5webapp.apis;
 
+import guru.springframework.spring5webapp.domain.Beneficiary;
+import guru.springframework.spring5webapp.domain.Payment;
+import guru.springframework.spring5webapp.domain.Veteran;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,6 +18,23 @@ public class VeteranController {
         return "this is the root";
     }
 
+    @GetMapping("/payments2")
+    public Veteran payments2() {
+        Veteran gloriaMendoza = new Veteran("Gloria Mendoza", "886532164");
+        Beneficiary gloriaSpouse = new Beneficiary("John Mendoza", "01");
+        Beneficiary gloriaChild = new Beneficiary("Michael Mendoza", "02");
+
+        Payment gloriaSpousePayment01 = new Payment("Regular Recurring", 1038.79F, "04/13/2018", "04/13/2018", "successful");
+        Payment gloriaSpousePayment02 = new Payment("Retroactive", 1038.79F, "04/13/2018", "04/13/2018", "returned");
+
+        gloriaMendoza.getBeneficiaries().add(gloriaSpouse);
+        gloriaMendoza.getBeneficiaries().add(gloriaChild);
+
+        gloriaSpouse.getPayments().add(gloriaSpousePayment01);
+        gloriaSpouse.getPayments().add(gloriaSpousePayment02);
+
+        return gloriaMendoza;
+    }
     @GetMapping("/payments")
     public String payments(){
         return "{\n" +
