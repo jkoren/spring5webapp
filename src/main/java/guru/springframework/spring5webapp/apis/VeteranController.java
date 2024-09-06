@@ -18,8 +18,8 @@ public class VeteranController {
         return "this is the root";
     }
 
-    @GetMapping("/payments2")
-    public Veteran payments2() {
+    @GetMapping("/veteran")
+    public Veteran veteran() {
         Veteran gloriaMendoza = new Veteran("Gloria Mendoza", "886532164");
         Beneficiary gloriaSpouse = new Beneficiary("John Mendoza", "01");
         Beneficiary gloriaChild = new Beneficiary("Michael Mendoza", "02");
@@ -35,8 +35,8 @@ public class VeteranController {
 
         return gloriaMendoza;
     }
-    @GetMapping("/payments")
-    public String payments(){
+    @GetMapping("/veteran-old")
+    public String veteranOld(){
         return "{\n" +
                 "    \"participantId\": \"32246727\",\n" +
                 "    \"veteranName\": \"Gloria Mendoza\",\n" +
